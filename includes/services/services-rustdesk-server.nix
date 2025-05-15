@@ -7,10 +7,12 @@
 	
 	config = lib.mkIf config.local.services.rustdesk-server.enable {
 		
-		services.rustdesk-server.enable = true;
-		services.rustdesk-server.openFirewall = true;
-		services.rustdesk-server.relayHosts = [
-			"www.staging.prairiefire.ca"
-		];
+		services.rustdesk-server {
+			enable = true;
+			openFirewall = true;
+			signal.relayHosts = [
+				"www.staging.prairiefire.ca"
+			];
+		};
 	};
 }
