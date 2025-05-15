@@ -19,7 +19,8 @@
 		../services/httpd/httpd-vhost-www.staging.prairiefire.ca.nix
 		
 		../stacks/stacks-staging.prairiefire.ca.nix
-		
+		../stacks/stacks-rustdesk-server.nix
+        
         ../system/system-nixos-agenix.nix
 		../system/system-nixos.nix
 		../system/system-overcommit-memory.nix
