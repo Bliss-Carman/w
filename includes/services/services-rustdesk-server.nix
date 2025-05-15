@@ -7,7 +7,7 @@
 	
 	config = lib.mkIf config.local.services.rustdesk-server.enable {
 		
-		services.rustdesk-server {
+		services.rustdesk-server = {
 			enable = true;
 			openFirewall = true;
 			signal.relayHosts = [
