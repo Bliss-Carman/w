@@ -5,7 +5,7 @@
 		default = false;
 	};
 	
-	config = lib.mkIf config.local.services.reverse-proxy.enable {
+	config = lib.mkIf config.local.services.rustdesk-server.enable {
 		
 		services.rustdesk-server.enable = true;
 		services.rustdesk-server.openFirewall = true;
