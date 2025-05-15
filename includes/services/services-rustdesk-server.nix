@@ -9,6 +9,8 @@
 		
 		services.rustdesk-server.enable = true;
 		services.rustdesk-server.openFirewall = true;
-		
+		services.rustdesk-server.relayHosts = [
+			"www.staging.prairiefire.ca"
+		]
 	};
 }
