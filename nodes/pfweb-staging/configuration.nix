@@ -15,12 +15,13 @@
 	local.services.reverse-proxy.enable = true;
 	local.services.httpd."www.staging.prairiefire.ca".enable = true;
 	local.system.runtimes.docker.enable = true;
+	local.services.reverse-proxy.enable = true;
 
 	# May have to be disabled in bootstrap.
 	local.services.wireguard-server.enable = true; 
 
 	networking.hostName = "pfweb"; # Define your hostname.
-	
+
 	environment.systemPackages = with pkgs; [
 
 	];
