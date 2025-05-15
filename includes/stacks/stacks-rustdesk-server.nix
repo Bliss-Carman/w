@@ -13,10 +13,6 @@ in
 	
 	config = lib.mkIf config.local.stacks."rustdesk-server".enable {
 		
-		
-		age.secrets."davis-env.age".file = ../../secrets/davis-env.age;
-		
-		
 		environment.etc."stacks/${packageName}/compose.yaml".text =
 		/* yaml */
 		''
