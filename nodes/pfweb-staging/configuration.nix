@@ -51,7 +51,7 @@
 	};
 
 	local.services.reverse-proxy.enable = true;
-    local.services.wireguard-server.enable = true;
+	#local.services.wireguard-server.enable = true;
 
 
 
