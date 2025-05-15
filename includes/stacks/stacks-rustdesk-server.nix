@@ -45,8 +45,8 @@ services:
     volumes:
       - ./data:/root
     ports:
-      - 21117:21117/tcp
-      - 21119:21119/tcp
+      - 172.16.100.1:21117:21117/tcp
+      - 172.16.100.1:21119:21119/tcp
     environment:
       ENCRYPTED_ONLY: 1
       PUID: ${UID}
