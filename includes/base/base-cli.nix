@@ -11,6 +11,7 @@
 		../services/services-reverse-proxy.nix
         ../services/services-wireguard-server.nix
         ../services/wireguard/wireguard-secrets.nix
+        ../services/services-rustdesk-server.nix
 
 		../services/acme/acme-staging.prairiefire.ca.nix
         ../services/acme/acme-prairiefire.ca.nix
