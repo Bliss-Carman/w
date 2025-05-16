@@ -17,6 +17,7 @@
 	local.system.runtimes.docker.enable = true;
 	# local.services.rustdesk-server.enable = true;
 	local.stacks."rustdesk-server".enable = true;
+	local.services.sshd.enable = true;
 
 	# May have to be disabled in bootstrap.
 	local.services.wireguard-server.enable = true; 
