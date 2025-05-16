@@ -9,19 +9,19 @@
 		
 		../services/services-acme.nix
 		../services/services-reverse-proxy.nix
-        ../services/services-wireguard-server.nix
-        ../services/wireguard/wireguard-secrets.nix
-        ../services/services-rustdesk-server.nix
+		../services/services-wireguard-server.nix
+		../services/wireguard/wireguard-secrets.nix
+		../services/services-sshd.nix
 
 		../services/acme/acme-staging.prairiefire.ca.nix
-        ../services/acme/acme-prairiefire.ca.nix
+		../services/acme/acme-prairiefire.ca.nix
 		
 		../services/httpd/httpd-vhost-www.staging.prairiefire.ca.nix
 		
 		../stacks/stacks-staging.prairiefire.ca.nix
 		../stacks/stacks-rustdesk-server.nix
-        
-        ../system/system-nixos-agenix.nix
+
+		../system/system-nixos-agenix.nix
 		../system/system-nixos.nix
 		../system/system-overcommit-memory.nix
 		../system/system-runtimes-docker.nix
@@ -32,7 +32,7 @@
 		../utilities/utilities-processes.nix
 		
 		../../users/usersandgroups.nix
-    ];
+	];
 	
 	# Locale
 	time.timeZone = "America/Winnipeg";
