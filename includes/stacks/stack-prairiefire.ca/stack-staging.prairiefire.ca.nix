@@ -8,7 +8,7 @@ in
 {
 	options.local.stacks."staging.prairiefire.ca".enable = lib.mkOption {
 		type = lib.types.bool;
-		default = true;
+		default = false;
 	};
 	
 	config = lib.mkIf config.local.stacks."staging.prairiefire.ca".enable {
