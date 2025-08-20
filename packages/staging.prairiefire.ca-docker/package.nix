@@ -5,7 +5,7 @@
 
 stdenvNoCC.mkDerivation {
 	
-	name = "stack-prairiefire.ca-dependencies";
+	name = "staging.prairiefire.ca-docker";
 	src = ./.;
 
 	installPhase = ''

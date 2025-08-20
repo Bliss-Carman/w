@@ -6,7 +6,7 @@ let
 	stacksDataRoot = "/stacks";
 
 
-	dockerContext = (pkgs.callPackage ../../../packages/stack-prairiefire.ca-dependencies/package.nix {});
+	dockerContext = (pkgs.callPackage ../../../packages/staging.prairiefire.ca-docker/package.nix {});
 in
 {
 	options.local.stacks."staging.prairiefire.ca".enable = lib.mkOption {
@@ -56,7 +56,6 @@ in
 			chown -R 0:0 ${stacksDataRoot}/${packageName}/data-mariadb
 
 			mkdir -p ${stacksDataRoot}/${packageName}/data-www-html
-			chown -R 0:0 ${stacksDataRoot}/${packageName}/data-www-html
 
 			touch ${stacksDataRoot}/${packageName}/php.ini
 		'';

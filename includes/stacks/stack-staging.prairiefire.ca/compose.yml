@@ -11,7 +11,7 @@ services:
     restart: always
     volumes:
       - ${stacksDataRoot}/${packageName}/data-www-html:/var/www/html
-      - ${stacksDataRoot}/${packageName}/php.ini:/usr/local/etc/php/php.ini
+      - ${dockerContext}/php.production.ini:/usr/local/etc/php/php.ini
 
   mariadb:
     image: mariadb:10
@@ -22,7 +22,7 @@ services:
     restart: always
     volumes:
      - ${stacksDataRoot}/${packageName}/data-mariadb:/var/lib/mysql
-     - ${stacksDataRoot}/${packageName}/mariadb-50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
+     - ${dockerContext}/mariadb-50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
      - ${MYSQL_ROOT_PASSWORD_FILE}:${MYSQL_ROOT_PASSWORD_FILE}
 
   phpmyadmin:
