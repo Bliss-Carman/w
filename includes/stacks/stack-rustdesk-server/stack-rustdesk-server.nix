@@ -13,46 +13,18 @@ in
 	
 	config = lib.mkIf config.local.stacks."rustdesk-server".enable {
 		
-		environment.etc."stacks/${packageName}/compose.yaml".text =
-		/* yaml */
-		''
-services:
-  hbbs:
-    container_name: hbbs
-    image: rustdesk/rustdesk-server:latest
-    command: hbbs
-    volumes:
-      - ${stacksDataRoot}/${packageName}/data:/root
-    ports:
-      - 172.16.100.1:21114:21114/tcp
-      - 172.16.100.1:21115:21115/tcp
-      - 172.16.100.1:21116:21116/tcp
-      - 172.16.100.1:21118:21118/tcp
-      - 172.16.100.1:21116:21116/udp
-    environment:
-      ENCRYPTED_ONLY: 1
-      PUID: ${UID}
-      PGID: ${GID}
-    depends_on:
-      - hbbr
-    restart: unless-stopped
-
-
-  hbbr:
-    container_name: hbbr
-    image: rustdesk/rustdesk-server:latest
-    command: hbbr
-    volumes:
-      - ${stacksDataRoot}/${packageName}/data:/root
-    ports:
-      - 172.16.100.1:21117:21117/tcp
-      - 172.16.100.1:21119:21119/tcp
-    environment:
-      ENCRYPTED_ONLY: 1
-      PUID: ${UID}
-      PGID: ${GID}
-    restart: unless-stopped
-'';
+		environment.etc."stacks/${packageName}/compose.yaml".text = (
+			builtins.replaceStrings [
+					''''${packageName}''
+					''''${stacksDataRoot}''
+				] 
+				[
+					packageName
+					stacksDataRoot
+				] 
+				(builtins.readFile ./compose.yml)
+			)
+		;
 		
 		systemd.services."${packageName}" = {
 			wantedBy = ["multi-user.target"];
@@ -66,7 +38,7 @@ services:
 			];
 		};
 		
-		system.activationScripts.makeDavisDirs = lib.stringAfter [ "var" ] ''
+		system.activationScripts.makeRustdeskDirs = lib.stringAfter [ "var" ] ''
 			mkdir -p ${stacksDataRoot}/${packageName}/data
 			chown -R 0:0 ${stacksDataRoot}/${packageName}/data
 		'';

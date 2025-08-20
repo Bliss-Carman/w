@@ -20,7 +20,7 @@
 				useACMEHost = "staging.prairiefire.ca";
 				
 				locations."/" = {
-					proxyPass = "http://127.0.0.1:8000";
+					proxyPass = "http://172.16.100.1:8000";
 					proxyWebsockets = true; # needed if you need to use WebSocket
 					
 					extraConfig = ''

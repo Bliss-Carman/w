@@ -51,7 +51,7 @@ in
 			];
 		};
 		
-		system.activationScripts.makeDavisDirs = lib.stringAfter [ "var" ] ''
+		system.activationScripts.makeStagingPFDirs = lib.stringAfter [ "var" ] ''
 			mkdir -p ${stacksDataRoot}/${packageName}/data-mariadb
 			chown -R 0:0 ${stacksDataRoot}/${packageName}/data-mariadb
 
