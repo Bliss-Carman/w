@@ -14,8 +14,8 @@ in
 	config = lib.mkIf config.local.stacks."staging.prairiefire.ca".enable {
 		local.services.httpd."www.staging.prairiefire.ca".enable = lib.mkForce true;
 		
-		age.secrets."prairiefire.ca-env.age".file = ../../secrets/prairiefire.ca-env.age;
-		age.secrets."mysql-root-password.age".file = ../../secrets/mysql-root-password.age;
+		age.secrets."prairiefire.ca-env.age".file = ../../../secrets/prairiefire.ca-env.age;
+		age.secrets."mysql-root-password.age".file = ../../../secrets/mysql-root-password.age;
 		
 		environment.etc."stacks/${packageName}/compose.yaml".text = (
 			builtins.replaceStrings [
