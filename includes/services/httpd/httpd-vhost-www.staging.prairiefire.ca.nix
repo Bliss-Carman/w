@@ -20,15 +20,10 @@
 				useACMEHost = "staging.prairiefire.ca";
 				
 				locations."/" = {
-					#proxyPass = "http://10.5.5.5:9974";
-					#proxyWebsockets = true; # needed if you need to use WebSocket
-					#root = "/var/www/blog";
-					
-					
-					return = "200 '<html><body>prairiefire.ca</body></html>'";
+					proxyPass = "http://127.0.0.1:8000";
+					proxyWebsockets = true; # needed if you need to use WebSocket
 					
 					extraConfig = ''
-						default_type text/html;
 						proxy_ssl_server_name on;
 					'';
 				};

@@ -45,4 +45,5 @@ in
 	"wgKey-tetrodesign-public.age".publicKeys = systems-all ++ users-admin;
 	"wgKey-tetrodesign-private.age".publicKeys = users-admin;
 	"dns-linode.age".publicKeys = systems-all ++ users-admin;
+	"mysql-root-password.age".publicKeys = systems-all ++ users-admin ++ user-dan;
 }
