@@ -3,7 +3,7 @@ services:
   php:
     build:
       context: ${dockerContext}
-    container_name: php
+    container_name: staging.prairiefire.ca-php
     ports:
     - '127.0.0.1:8000:80'
     environment:
@@ -15,7 +15,9 @@ services:
 
   mariadb:
     image: mariadb:10
-    container_name: mariadb
+    container_name: staging.prairiefire.ca-mariadb
+    ports:
+    - '127.0.0.1:3306:3306'
     environment:
       - TZ=America/Winnipeg
       - MYSQL_ROOT_PASSWORD_FILE=${MYSQL_ROOT_PASSWORD_FILE}
@@ -27,7 +29,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    container_name: staging.prairiefire.ca-phpmyadmin
     restart: always
     environment:
      - PMA_HOST=mariadb

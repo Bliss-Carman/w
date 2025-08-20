@@ -57,7 +57,9 @@ in
 
 			mkdir -p ${stacksDataRoot}/${packageName}/data-www-html
 
-			touch ${stacksDataRoot}/${packageName}/php.ini
+			if [[ ! -s "${stacksDataRoot}/${packageName}/php.ini" ]]; then
+				cp "${dockerContext}/php.production.ini" "${stacksDataRoot}/${packageName}/php.ini"
+			fi
 		'';
 		
 		networking.firewall.allowedTCPPorts = [ 8000 ];
