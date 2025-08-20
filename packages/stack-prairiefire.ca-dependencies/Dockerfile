@@ -28,5 +28,5 @@ RUN docker-php-ext-configure mysqli \
 	&& a2enmod ssl \
 	&& openssl req -subj '/CN=example.com/O=My Company Name LTD./C=US' -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem
 
-COPY ${php.apache2.conf} /etc/apache2/apache2.conf
+COPY php.apache2.conf /etc/apache2/apache2.conf
 RUN a2ensite default-ssl && a2enmod rewrite
