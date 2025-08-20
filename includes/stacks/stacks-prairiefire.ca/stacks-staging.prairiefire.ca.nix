@@ -14,7 +14,7 @@ in
 	config = lib.mkIf config.local.stacks."staging.prairiefire.ca".enable {
 		local.services.httpd."www.staging.prairiefire.ca".enable = lib.mkForce true;
 		
-		age.secrets."davis-env.age".file = ../../secrets/davis-env.age;
+		age.secrets."prairiefire.ca-env.age".file = ../../secrets/prairiefire.ca-env.age;
 		age.secrets."mysql-root-password.age".file = ../../secrets/mysql-root-password.age;
 		
 		environment.etc."stacks/${packageName}/compose.yaml".text = (
@@ -39,7 +39,7 @@ in
 			after = ["docker.service" "docker.socket"];
 			path = [pkgs.docker];
 			script = ''
-				docker compose --env-file ${config.age.secrets."davis-env.age".path} -f /etc/stacks/${packageName}/compose.yaml up --remove-orphans
+				docker compose --env-file ${config.age.secrets."prairiefire.ca-env.age".path} -f /etc/stacks/${packageName}/compose.yaml up --remove-orphans
 			'';
 			restartTriggers = [
 				config.environment.etc."stacks/${packageName}/compose.yaml".source
