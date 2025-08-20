@@ -22,7 +22,7 @@ services:
     image: rustdesk/rustdesk-server:latest
     command: hbbs
     volumes:
-      - ./data:/root
+      - ${stacksDataRoot}/${packageName}/data:/root
     ports:
       - 172.16.100.1:21114:21114/tcp
       - 172.16.100.1:21115:21115/tcp
@@ -43,7 +43,7 @@ services:
     image: rustdesk/rustdesk-server:latest
     command: hbbr
     volumes:
-      - ./data:/root
+      - ${stacksDataRoot}/${packageName}/data:/root
     ports:
       - 172.16.100.1:21117:21117/tcp
       - 172.16.100.1:21119:21119/tcp
