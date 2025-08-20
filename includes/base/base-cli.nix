@@ -18,7 +18,7 @@
 		
 		../services/httpd/httpd-vhost-www.staging.prairiefire.ca.nix
 		
-		../stacks/stacks-prairiefire.ca/stacks-staging.prairiefire.ca.nix
+		../stacks/stack-prairiefire.ca/stack-staging.prairiefire.ca.nix
 		../stacks/stacks-rustdesk-server/stacks-rustdesk-server.nix
 
 		../system/system-nixos-agenix.nix

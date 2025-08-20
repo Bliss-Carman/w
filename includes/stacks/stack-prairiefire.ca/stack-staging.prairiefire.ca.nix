@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
-	packageName = "davis";
+	packageName = "stack-staging.prairiefire.ca";
 	UID = "0";
 	GID = "0";
 	stacksDataRoot = "/mnt/DOCUMENTS-01/stacks";
@@ -46,13 +46,13 @@ in
 			];
 		};
 		
-		system.activationScripts.makeDavisDirs = lib.stringAfter [ "var" ] ''
-			mkdir -p ${stacksDataRoot}/${packageName}/data-postgres
-			chown -R 999:999 ${stacksDataRoot}/${packageName}/data-postgres
+		# system.activationScripts.makeDavisDirs = lib.stringAfter [ "var" ] ''
+		# 	mkdir -p ${stacksDataRoot}/${packageName}/data-postgres
+		# 	chown -R 999:999 ${stacksDataRoot}/${packageName}/data-postgres
 			
-			mkdir -p ${stacksDataRoot}/${packageName}/data-davis
-			chown -R ${UID}:${GID} ${stacksDataRoot}/${packageName}/data-davis
-		'';
+		# 	mkdir -p ${stacksDataRoot}/${packageName}/data-davis
+		# 	chown -R ${UID}:${GID} ${stacksDataRoot}/${packageName}/data-davis
+		# '';
 		
 		networking.firewall.allowedTCPPorts = [ 9900 ];
 		#networking.firewall.allowedUDPPorts = [ 9900 ];

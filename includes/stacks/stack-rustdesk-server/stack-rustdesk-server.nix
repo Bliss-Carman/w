@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
-	packageName = "rustdesk-server";
+	packageName = "stack-rustdesk-server";
 	UID = "0";
 	GID = "0";
 	stacksDataRoot = "/stacks";
