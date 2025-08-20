@@ -4,6 +4,9 @@ let
 	UID = "0";
 	GID = "0";
 	stacksDataRoot = "/stacks";
+
+
+	dockerDeps = (pkgs.callPackage ../../../packages/stack-prairiefire.ca-dependencies/package.nix {});
 in
 {
 	options.local.stacks."staging.prairiefire.ca".enable = lib.mkOption {
@@ -49,9 +52,6 @@ in
 		system.activationScripts.makeDavisDirs = lib.stringAfter [ "var" ] ''
 			mkdir -p ${stacksDataRoot}/${packageName}/data-mariadb
 			chown -R 0:0 ${stacksDataRoot}/${packageName}/data-mariadb
-			
-			mkdir -p ${stacksDataRoot}/${packageName}/data-davis
-			chown -R ${UID}:${GID} ${stacksDataRoot}/${packageName}/data-davis
 		'';
 		
 		networking.firewall.allowedTCPPorts = [ 8000 ];

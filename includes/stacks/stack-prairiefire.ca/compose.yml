@@ -44,8 +44,8 @@ services:
       - TZ=America/Winnipeg
     restart: always
     volumes:
-      - ./data-www-html:/var/www/html
-      - ./php.development.ini:/usr/local/etc/php/php.ini
+      - ${stacksDataRoot}/${packageName}/data-www-html:/var/www/html
+      - ${stacksDataRoot}/${packageName}/php.production.ini:/usr/local/etc/php/php.ini
 
   mariadb:
     image: mariadb:10
@@ -55,8 +55,8 @@ services:
       - MYSQL_ROOT_PASSWORD_FILE=${MYSQL_ROOT_PASSWORD_FILE}
     restart: always
     volumes:
-     - ./data-mariadb:/var/lib/mysql
-     - ./mariadb-50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
+     - ${stacksDataRoot}/${packageName}/data-mariadb:/var/lib/mysql
+     - ${stacksDataRoot}/${packageName}/mariadb-50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
      - ${MYSQL_ROOT_PASSWORD_FILE}:${MYSQL_ROOT_PASSWORD_FILE}
 
   phpmyadmin:
