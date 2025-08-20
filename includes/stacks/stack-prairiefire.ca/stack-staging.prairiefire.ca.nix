@@ -6,7 +6,7 @@ let
 	stacksDataRoot = "/stacks";
 
 
-	dockerDeps = (pkgs.callPackage ../../../packages/stack-prairiefire.ca-dependencies/package.nix {});
+	dockerContext = (pkgs.callPackage ../../../packages/stack-prairiefire.ca-dependencies/package.nix {});
 in
 {
 	options.local.stacks."staging.prairiefire.ca".enable = lib.mkOption {
@@ -25,13 +25,13 @@ in
 					''''${packageName}''
 					''''${stacksDataRoot}''
 					''''${MYSQL_ROOT_PASSWORD_FILE}''
-					''''${php.apache2.conf}''
+					''''${dockerContext}''
 				] 
 				[
 					packageName
 					stacksDataRoot
 					config.age.secrets."mysql-root-password.age".path
-					"${dockerDeps}/php.apache2.conf"
+					"${dockerContext}"
 				] 
 				(builtins.readFile ./compose.yml)
 			)
