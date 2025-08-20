@@ -25,11 +25,13 @@ in
 					''''${packageName}''
 					''''${stacksDataRoot}''
 					''''${MYSQL_ROOT_PASSWORD_FILE}''
+					''''${php.apache2.conf}''
 				] 
 				[
 					packageName
 					stacksDataRoot
 					config.age.secrets."mysql-root-password.age".path
+					"${dockerDeps}/php.apache2.conf"
 				] 
 				(builtins.readFile ./compose.yml)
 			)
@@ -52,6 +54,11 @@ in
 		system.activationScripts.makeDavisDirs = lib.stringAfter [ "var" ] ''
 			mkdir -p ${stacksDataRoot}/${packageName}/data-mariadb
 			chown -R 0:0 ${stacksDataRoot}/${packageName}/data-mariadb
+
+			mkdir -p ${stacksDataRoot}/${packageName}/data-www-html
+			chown -R 0:0 ${stacksDataRoot}/${packageName}/data-www-html
+
+			touch ${stacksDataRoot}/${packageName}/php.ini
 		'';
 		
 		networking.firewall.allowedTCPPorts = [ 8000 ];
