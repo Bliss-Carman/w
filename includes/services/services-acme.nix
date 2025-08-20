@@ -7,6 +7,7 @@
 	
 	config = lib.mkIf config.local.services.acme.enable {
 		security.acme.acceptTerms = true;
+		security.acme.defaults.email = "daniel.saul+pfacme@gmail.com";
 	};
 }
 
