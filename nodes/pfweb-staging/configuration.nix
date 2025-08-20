@@ -13,11 +13,14 @@
 
 	local.hardware.qemu.guest.enable = true;
 	local.services.reverse-proxy.enable = true;
-	local.services.httpd."www.staging.prairiefire.ca".enable = true;
+
 	local.system.runtimes.docker.enable = true;
 	# local.services.rustdesk-server.enable = true;
 	local.stacks."rustdesk-server".enable = true;
 	local.stacks."staging.prairiefire.ca".enable = true;
+
+	local.services.httpd."www.staging.prairiefire.ca".enable = true;
+	local.services.httpd."phpmyadmin.staging.prairiefire.ca".enable = true;
 
 	# May have to be disabled in bootstrap.
 	local.services.wireguard-server.enable = true; 
