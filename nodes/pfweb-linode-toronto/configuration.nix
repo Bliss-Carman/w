@@ -39,6 +39,7 @@
 	];
 
 	networking.nameservers = [ "1.1.1.1" "9.9.9.9" "8.8.8.8" "8.8.4.4" ];
+	networking.enableIPv6 = false;
 	networking.usePredictableInterfaceNames = false;
 	networking.useDHCP = false;
 	networking.interfaces.eth0.useDHCP = true;
