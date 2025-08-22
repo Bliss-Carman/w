@@ -55,6 +55,8 @@
 				# Prevent injection of code in other mime types (XSS Attacks)
 				add_header X-Content-Type-Options nosniff;
 				
+				access_log syslog:server=unix:/dev/log;
+				error_log syslog:server=unix:/dev/log;
 			'';
 
 

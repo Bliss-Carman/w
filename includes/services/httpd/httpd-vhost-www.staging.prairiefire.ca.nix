@@ -25,6 +25,12 @@
 					
 					extraConfig = ''
 						proxy_ssl_server_name on;
+
+						if ($arg_sjsl) {
+							access_log off;
+							#log_not_found off;
+							return 403;
+						}
 					'';
 				};
 				
