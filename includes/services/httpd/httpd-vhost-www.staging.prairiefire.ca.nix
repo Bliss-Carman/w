@@ -24,18 +24,6 @@
 					proxyWebsockets = true; # needed if you need to use WebSocket
 					
 					extraConfig = ''
-						set_real_ip_from 10.0.0.0/8;
-						set_real_ip_from 172.16.0.0/12;
-						real_ip_header X-Forwarded-For;
-						real_ip_recursive on;
-						#proxy_set_header Host $host;
-						proxy_set_header X-Original-URL $scheme://$http_host$request_uri;
-						proxy_set_header X-Forwarded-Proto $scheme;
-						proxy_set_header X-Forwarded-Host $http_host;
-						proxy_set_header X-Forwarded-URI $request_uri;
-						proxy_set_header X-Forwarded-Ssl on;
-						proxy_set_header X-Forwarded-For $remote_addr;
-						proxy_set_header X-Real-IP $remote_addr;
 						proxy_ssl_server_name on;
 					'';
 				};
