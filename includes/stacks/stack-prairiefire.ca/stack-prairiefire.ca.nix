@@ -9,7 +9,7 @@ let
 	dockerContext = (pkgs.callPackage ../../../packages/prairiefire.ca-docker/package.nix {});
 in
 {
-	options.local.stacks."staging.prairiefire.ca".enable = lib.mkOption {
+	options.local.stacks."prairiefire.ca".enable = lib.mkOption {
 		type = lib.types.bool;
 		default = false;
 	};
