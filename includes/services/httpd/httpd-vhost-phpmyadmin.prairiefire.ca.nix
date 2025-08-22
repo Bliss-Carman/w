@@ -25,6 +25,13 @@
 						deny all;
 					'';
 				};
+
+				locations."/robots.txt" = {
+					extraConfig = ''
+						add_header Content-Type text/plain;
+						return 200 "User-agent: *\nDisallow: /\n";
+					'';
+				};
 				
 				
 			};
