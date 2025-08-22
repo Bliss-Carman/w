@@ -39,22 +39,6 @@
 				real_ip_header X-Forwarded-For;
 				real_ip_recursive on;
 
-				# Add HSTS header with preloading to HTTPS requests.
-				# Adding this header to HTTP requests is discouraged
-				map $scheme $hsts_header {
-					https   "max-age=31536000; includeSubdomains; preload";
-				}
-				add_header Strict-Transport-Security $hsts_header;
-
-				# Minimize information leaked to other domains
-				add_header 'Referrer-Policy' 'origin-when-cross-origin';
-
-				# Disable embedding as a frame
-				add_header X-Frame-Options DENY;
-
-				# Prevent injection of code in other mime types (XSS Attacks)
-				add_header X-Content-Type-Options nosniff;
-				
 				access_log syslog:server=unix:/dev/log;
 				error_log syslog:server=unix:/dev/log;
 			'';
