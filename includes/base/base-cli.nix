@@ -15,6 +15,7 @@
 
 		../services/acme/acme-staging.prairiefire.ca.nix
 		../services/acme/acme-prairiefire.ca.nix
+		../services/acme/acme-admin.prairiefire.ca.nix
 		
 		../services/httpd/httpd-vhost-www.staging.prairiefire.ca.nix
 		../services/httpd/httpd-vhost-phpmyadmin.staging.prairiefire.ca.nix

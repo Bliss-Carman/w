@@ -33,7 +33,7 @@
 						if ($arg_sjsl) {
 							access_log off;
 							#log_not_found off;
-							return 403;
+							return 444;
 						}
 					'';
 				};
