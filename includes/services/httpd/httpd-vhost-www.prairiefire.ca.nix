@@ -103,7 +103,17 @@
 					'';
 				};
 				
-				
+				locations."/wp-cron.php" = {
+					proxyPass = "http://172.16.100.1:8003";
+					proxyWebsockets = true; # needed if you need to use WebSocket
+					extraConfig = ''
+						proxy_ssl_server_name on;
+						allow 172.16.0.0/12;
+						deny all;
+						access_log off;
+						log_not_found off;
+					'';
+				}
 				
 			};
 		};
