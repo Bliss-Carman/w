@@ -42,40 +42,40 @@
 
 				# rm public.txt private.txt; umask 077 && wg genkey > private.txt && wg pubkey < private.txt > public.txt
 
-				peers = [
-					{ # Dan (test)
-						publicKey = builtins.readFile config.age.secrets."wgKey-dan-public.age".path;
-						allowedIPs = [ "172.16.100.2/32" ];
-					}
-					{ # lindsey-office
-						publicKey = builtins.readFile config.age.secrets."wgKey-lindsey-office-public.age".path;
-						allowedIPs = [ "172.16.100.3/32" ];
-					}
-					{ # lindsey-remote
-						publicKey = builtins.readFile config.age.secrets."wgKey-lindsey-remote-public.age".path;
-						allowedIPs = [ "172.16.100.4/32" ];
-					}
-					{ # janine-office
-						publicKey = builtins.readFile config.age.secrets."wgKey-janine-office-public.age".path;
-						allowedIPs = [ "172.16.100.5/32" ];
-					}
-					{ # janine-remote
-						publicKey = builtins.readFile config.age.secrets."wgKey-janine-remote-public.age".path;
-						allowedIPs = [ "172.16.100.6/32" ];
-					}
-					{ # carolyn-office
-						publicKey = builtins.readFile config.age.secrets."wgKey-carolyn-office-public.age".path;
-						allowedIPs = [ "172.16.100.7/32" ];
-					}
-					{ # carolyn-remote
-						publicKey = builtins.readFile config.age.secrets."wgKey-carolyn-remote-public.age".path;
-						allowedIPs = [ "172.16.100.8/32" ];
-					}
-					{ # tetrodesign
-						publicKey = builtins.readFile config.age.secrets."wgKey-tetrodesign-public.age".path;
-						allowedIPs = [ "172.16.100.9/32" ];
-					}
-				];
+				# peers = [
+				# 	{ # Dan (test)
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-dan-public.age".path;
+				# 		allowedIPs = [ "172.16.100.2/32" ];
+				# 	}
+				# 	{ # lindsey-office
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-lindsey-office-public.age".path;
+				# 		allowedIPs = [ "172.16.100.3/32" ];
+				# 	}
+				# 	{ # lindsey-remote
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-lindsey-remote-public.age".path;
+				# 		allowedIPs = [ "172.16.100.4/32" ];
+				# 	}
+				# 	{ # janine-office
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-janine-office-public.age".path;
+				# 		allowedIPs = [ "172.16.100.5/32" ];
+				# 	}
+				# 	{ # janine-remote
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-janine-remote-public.age".path;
+				# 		allowedIPs = [ "172.16.100.6/32" ];
+				# 	}
+				# 	{ # carolyn-office
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-carolyn-office-public.age".path;
+				# 		allowedIPs = [ "172.16.100.7/32" ];
+				# 	}
+				# 	{ # carolyn-remote
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-carolyn-remote-public.age".path;
+				# 		allowedIPs = [ "172.16.100.8/32" ];
+				# 	}
+				# 	{ # tetrodesign
+				# 		publicKey = builtins.readFile config.age.secrets."wgKey-tetrodesign-public.age".path;
+				# 		allowedIPs = [ "172.16.100.9/32" ];
+				# 	}
+				# ];
 			};
 		};
 	};
