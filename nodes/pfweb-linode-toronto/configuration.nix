@@ -38,10 +38,6 @@
 
 	];
 
-	# Enable the OpenSSH daemon.
-	#services.openssh.enable = true;
-	#services.openssh.settings.PermitRootLogin = "yes";
-
 	networking.usePredictableInterfaceNames = false;
 	networking.useDHCP = false;
 	networking.interfaces.eth0.useDHCP = true;

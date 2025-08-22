@@ -33,6 +33,11 @@
 				};
 			};
 			
+			commonHttpConfig = ''
+				server_tokens off;
+			'';
+
+
 		};
 		
 		networking.firewall.allowedTCPPorts = [ 80 443 ];
