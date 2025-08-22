@@ -34,7 +34,7 @@
 			};
 			
 			commonHttpConfig = ''
-				server_tokens off;
+				
 			'';
 
 

@@ -44,11 +44,5 @@
 	networking.useDHCP = false;
 	networking.interfaces.eth0.useDHCP = true;
 
-	# environment.systemPackages = with pkgs; [
-	# 	inetutils
-	# 	mtr
-	# 	sysstat
-	# ];
-
 	system.stateVersion = "25.05";
 }
