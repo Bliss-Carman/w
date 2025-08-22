@@ -113,7 +113,7 @@
 						access_log off;
 						log_not_found off;
 					'';
-				}
+				};
 				
 			};
 		};
