@@ -53,7 +53,7 @@ in
 		
 		system.activationScripts.makeStagingPFDirs = lib.stringAfter [ "var" ] ''
 			mkdir -p ${stacksDataRoot}/${packageName}/data-mariadb
-			chown -R 151:996 ${stacksDataRoot}/${packageName}/data-mariadb
+			chown -R 999:999 ${stacksDataRoot}/${packageName}/data-mariadb
 
 			mkdir -p ${stacksDataRoot}/${packageName}/data-www-html
 			chown -R 33:33 ${stacksDataRoot}/${packageName}/data-www-html
