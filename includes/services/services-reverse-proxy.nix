@@ -39,6 +39,12 @@
 				real_ip_header X-Forwarded-For;
 				real_ip_recursive on;
 
+				# Add HSTS header with preloading to HTTPS requests.
+				# Adding this header to HTTP requests is discouraged
+				map $scheme $hsts_header {
+					https   "max-age=31536000; includeSubdomains; preload";
+				}
+
 				access_log syslog:server=unix:/dev/log;
 				error_log syslog:server=unix:/dev/log;
 			'';
