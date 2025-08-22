@@ -13,9 +13,11 @@ let
 	users-admin = [ ] ++  user-dan ++ user-lindsey;
 
 	system-pfweb-staging = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH1GuHAFiaOYtI/s5ulMwXwXQAmtLaSROLo1MniHvxed";
+	system-pfweb-linode-toronto = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMJBTmB4V6t3GKI7aKS9j69ma7DV7iT4ULbs/wgzpwo6";
 	
 	systems-servers = [
 		system-pfweb-staging
+		system-pfweb-linode-toronto
 	];
 	
 	systems-all = [] ++ systems-servers;
