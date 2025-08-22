@@ -88,8 +88,6 @@
 					extraConfig = ''
 						proxy_ssl_server_name on;
 						deny all;
-						access_log off;
-						log_not_found off;
 					'';
 				};
 
