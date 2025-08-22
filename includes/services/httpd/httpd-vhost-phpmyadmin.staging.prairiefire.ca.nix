@@ -20,6 +20,9 @@
 					
 					extraConfig = ''
 						proxy_ssl_server_name on;
+						allow 172.18.0.1; # docker host
+						allow 172.16.0.0/12;
+						deny all;
 					'';
 				};
 				
