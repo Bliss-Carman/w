@@ -25,9 +25,12 @@
 	# local.services.rustdesk-server.enable = true;
 	local.stacks."rustdesk-server".enable = true;
 	local.stacks."staging.prairiefire.ca".enable = true;
+	local.stacks."prairiefire.ca".enable = true;
 
 	local.services.httpd."www.staging.prairiefire.ca".enable = true;
 	local.services.httpd."phpmyadmin.staging.prairiefire.ca".enable = true;
+	local.services.httpd."www.prairiefire.ca".enable = true;
+	local.services.httpd."phpmyadmin.prairiefire.ca".enable = true;
 
 	# May have to be disabled in bootstrap.
 	local.services.wireguard-server.enable = true; 

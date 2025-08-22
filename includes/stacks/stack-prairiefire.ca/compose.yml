@@ -1,0 +1,38 @@
+version: "3"
+services:
+  php:
+    build:
+      context: ${dockerContext}
+    container_name: prairiefire.ca-php
+    ports:
+    - '172.16.100.1:8003:80'
+    environment:
+      - TZ=America/Winnipeg
+    restart: always
+    volumes:
+      - ${stacksDataRoot}/${packageName}/data-www-html:/var/www/html
+      - ${dockerContext}/php.production.ini:/usr/local/etc/php/php.ini
+
+  mariadb:
+    # mariadb:10
+    image: mariadb@sha256:812d3a450addcfe416420c72311798f3f3109a11d9677716dc631c429221880c
+    container_name: prairiefire.ca-mariadb
+    ports:
+    - '172.16.100.1:8004:3306'
+    environment:
+      - TZ=America/Winnipeg
+      - MYSQL_ROOT_PASSWORD_FILE=${MYSQL_ROOT_PASSWORD_FILE}
+    restart: always
+    volumes:
+     - ${stacksDataRoot}/${packageName}/data-mariadb:/var/lib/mysql
+     - ${dockerContext}/mariadb-50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
+     - ${MYSQL_ROOT_PASSWORD_FILE}:${MYSQL_ROOT_PASSWORD_FILE}
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: prairiefire.ca-phpmyadmin
+    ports:
+    - '172.16.100.1:8005:80'
+    restart: always
+    environment:
+     - PMA_HOST=mariadb
