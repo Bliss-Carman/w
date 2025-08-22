@@ -43,7 +43,7 @@
 						allow 172.16.0.0/12;
 						deny all;
 					'';
-				}
+				};
 
 				locations."/xmlrpc.php" = {
 					extraConfig = ''
@@ -52,7 +52,7 @@
 						access_log off;
 						log_not_found off;
 					'';
-				}
+				};
 				
 				
 			};
