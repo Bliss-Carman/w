@@ -56,6 +56,9 @@ in
 			chown -R 151:996 ${stacksDataRoot}/${packageName}/data-mariadb
 
 			mkdir -p ${stacksDataRoot}/${packageName}/data-www-html
+			chown -R 33:33 ${stacksDataRoot}/${packageName}/data-www-html
+			find ${stacksDataRoot}/${packageName}/data-www-html -type d -exec chmod 755 {} \;
+			find ${stacksDataRoot}/${packageName}/data-www-html -type f -exec chmod 644 {} \;
 
 			if [[ ! -s "${stacksDataRoot}/${packageName}/php.ini" ]]; then
 				cp "${dockerContext}/php.production.ini" "${stacksDataRoot}/${packageName}/php.ini"
