@@ -75,6 +75,10 @@
 						publicKey = builtins.readFile config.age.secrets."wgKey-tetrodesign-public.age".path;
 						allowedIPs = [ "172.16.100.9/32" ];
 					}
+					# { # subscriptionmachine
+					# 	publicKey = builtins.readFile config.age.secrets."wgKey-subscriptionmachine-public.age".path;
+					# 	allowedIPs = [ "172.16.100.10/32" ];
+					# }
 				];
 			};
 		};
