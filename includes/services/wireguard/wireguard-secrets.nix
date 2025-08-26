@@ -10,5 +10,5 @@
 	age.secrets."wgKey-carolyn-office-public.age".file = ../../../secrets/wgKey-carolyn-office-public.age;
 	age.secrets."wgKey-carolyn-remote-public.age".file = ../../../secrets/wgKey-carolyn-remote-public.age;
 	age.secrets."wgKey-tetrodesign-public.age".file = ../../../secrets/wgKey-tetrodesign-public.age;
-	# age.secrets."wgKey-subscriptionmachine-public.age".file = ../../../secrets/wgKey-subscriptionmachine-public.age;
+	age.secrets."wgKey-subscriptionmachine-public.age".file = ../../../secrets/wgKey-subscriptionmachine-public.age;
 }
