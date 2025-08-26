@@ -12,7 +12,7 @@ services:
       - 172.16.100.1:21118:21118/tcp
       - 172.16.100.1:21116:21116/udp
     environment:
-      ENCRYPTED_ONLY: 1
+      # ENCRYPTED_ONLY: 1
       PUID: ${UID}
       PGID: ${GID}
     depends_on:
@@ -30,7 +30,7 @@ services:
       - 172.16.100.1:21117:21117/tcp
       - 172.16.100.1:21119:21119/tcp
     environment:
-      ENCRYPTED_ONLY: 1
+      # ENCRYPTED_ONLY: 1
       PUID: ${UID}
       PGID: ${GID}
     restart: unless-stopped
