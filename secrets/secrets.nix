@@ -28,6 +28,7 @@ in
 	"userHashedPasswordFile-lindsey.age".publicKeys = systems-all ++ users-admin ++ user-lindsey;
 	"userHashedPasswordFile-root.age".publicKeys = systems-all ++ users-admin;
 	"userHashedPasswordFile-tetrodesign.age".publicKeys = systems-all ++ users-admin;
+
 	"wgKey-server-public.age".publicKeys = systems-all ++ users-admin;
 	"wgKey-server-private.age".publicKeys = systems-servers ++ users-admin;
 	"wgKey-dan-public.age".publicKeys = systems-all ++ users-admin;
@@ -48,6 +49,15 @@ in
 	"wgKey-tetrodesign-private.age".publicKeys = users-admin;
 	"wgKey-subscriptionmachine-public.age".publicKeys = systems-all ++ users-admin;
 	"wgKey-subscriptionmachine-private.age".publicKeys = users-admin;
+
+	"sftp-tetro-host-key-ecdsa-private.age".publicKeys = systems-servers ++ users-admin;
+	"sftp-tetro-host-key-ecdsa-public.age".publicKeys = systems-servers ++ users-admin;
+	"sftp-tetro-host-key-ed25519-private.age".publicKeys = systems-servers ++ users-admin;
+	"sftp-tetro-host-key-ed25519-public.age".publicKeys = systems-servers ++ users-admin;
+	"sftp-tetro-host-key-rsa-private.age".publicKeys = systems-servers ++ users-admin;
+	"sftp-tetro-host-key-rsa-public.age".publicKeys = systems-servers ++ users-admin;
+	"sftp-tetro-env.age".publicKeys = systems-servers ++ users-admin;
+
 	"dns-linode.age".publicKeys = systems-all ++ users-admin;
 	"mysql-root-password.age".publicKeys = systems-all ++ users-admin ++ user-dan;
 	"prairiefire.ca-env.age".publicKeys = systems-all ++ users-admin ++ user-dan;

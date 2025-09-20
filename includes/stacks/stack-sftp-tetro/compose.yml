@@ -1,0 +1,19 @@
+services:
+  sftp:
+    container_name: sftp-tetro
+    # https://hub.docker.com/r/atmoz/sftp/
+    image: atmoz/sftp
+    volumes:
+      - ${dockerContext}/users.conf:/etc/sftp/users.conf:ro
+
+      - ${SECRET_PATH_sftp-tetro-host-key-ecdsa-public}:/etc/ssh/ssh_host_ecdsa_key:ro
+      - ${SECRET_PATH_sftp-tetro-host-key-ed25519-public}:/etc/ssh/ssh_host_ed25519_key:ro
+      - ${SECRET_PATH_sftp-tetro-host-key-rsa-public}:/etc/ssh/ssh_host_rsa_key:ro
+
+      - /stacks/stack-prairiefire.ca/data-www-html:/home/tetrodesign/www
+      - ${dockerContext}/nicole.pub:/home/tetrodesign/.ssh/keys/nicole.pub:ro
+    ports:
+      - 172.16.100.1:8100:8100/tcp
+    environment:
+    restart: unless-stopped
+
