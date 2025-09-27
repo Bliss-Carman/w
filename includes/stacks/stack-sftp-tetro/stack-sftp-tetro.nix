@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
-	packageName = "stack-sftp";
+	packageName = "stack-sftp-tetro";
 	UID = "0";
 	GID = "0";
 	stacksDataRoot = "/stacks";
