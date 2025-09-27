@@ -14,7 +14,7 @@ services:
       - ${dockerContext}/nicole.pub:/home/tetrodesign/.ssh/keys/nicole.pub:ro
       - ${dockerContext}/dan-test.pub:/home/tetrodesign/.ssh/keys/dan-test.pub:ro
     ports:
-      - 172.16.100.1:8100:8100/tcp
+      - 172.16.100.1:8100:22/tcp
     #environment:
     restart: unless-stopped
 
