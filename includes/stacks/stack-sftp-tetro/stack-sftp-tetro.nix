@@ -8,12 +8,12 @@ let
 	dockerContext = (pkgs.callPackage ../../../packages/stack-sftp/package.nix {});
 in
 {
-	options.local.stacks."sftp".enable = lib.mkOption {
+	options.local.stacks."sftp-tetro".enable = lib.mkOption {
 		type = lib.types.bool;
 		default = false;
 	};
 	
-	config = lib.mkIf config.local.stacks."sftp".enable {
+	config = lib.mkIf config.local.stacks."sftp-tetro".enable {
 
 		age.secrets."sftp-tetro-host-key-ecdsa-private.age".file = ../../secrets/sftp-tetro-host-key-ecdsa-private.age;
 		age.secrets."sftp-tetro-host-key-ecdsa-public.age".file = ../../secrets/sftp-tetro-host-key-ecdsa-public.age;
