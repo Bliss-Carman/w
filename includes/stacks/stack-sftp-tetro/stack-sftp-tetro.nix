@@ -15,13 +15,13 @@ in
 	
 	config = lib.mkIf config.local.stacks."sftp-tetro".enable {
 
-		age.secrets."sftp-tetro-host-key-ecdsa-private.age".file = ../../secrets/sftp-tetro-host-key-ecdsa-private.age;
-		age.secrets."sftp-tetro-host-key-ecdsa-public.age".file = ../../secrets/sftp-tetro-host-key-ecdsa-public.age;
-		age.secrets."sftp-tetro-host-key-ed25519-private.age".file = ../../secrets/sftp-tetro-host-key-ed25519-private.age;
-		age.secrets."sftp-tetro-host-key-ed25519-public.age".file = ../../secrets/sftp-tetro-host-key-ed25519-public.age;
-		age.secrets."sftp-tetro-host-key-rsa-private.age".file = ../../secrets/sftp-tetro-host-key-rsa-private.age;
-		age.secrets."sftp-tetro-host-key-rsa-public.age".file = ../../secrets/sftp-tetro-host-key-rsa-public.age;
-		age.secrets."sftp-tetro-env.age".file = ../../secrets/sftp-tetro-env.age;
+		age.secrets."sftp-tetro-host-key-ecdsa-private.age".file = ../../../secrets/sftp-tetro-host-key-ecdsa-private.age;
+		age.secrets."sftp-tetro-host-key-ecdsa-public.age".file = ../../../secrets/sftp-tetro-host-key-ecdsa-public.age;
+		age.secrets."sftp-tetro-host-key-ed25519-private.age".file = ../../../secrets/sftp-tetro-host-key-ed25519-private.age;
+		age.secrets."sftp-tetro-host-key-ed25519-public.age".file = ../../../secrets/sftp-tetro-host-key-ed25519-public.age;
+		age.secrets."sftp-tetro-host-key-rsa-private.age".file = ../../../secrets/sftp-tetro-host-key-rsa-private.age;
+		age.secrets."sftp-tetro-host-key-rsa-public.age".file = ../../../secrets/sftp-tetro-host-key-rsa-public.age;
+		age.secrets."sftp-tetro-env.age".file = ../../../secrets/sftp-tetro-env.age;
 		
 
 
