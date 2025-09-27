@@ -12,6 +12,7 @@ services:
 
       - /stacks/stack-prairiefire.ca/data-www-html:/home/tetrodesign/www
       - ${dockerContext}/nicole.pub:/home/tetrodesign/.ssh/keys/nicole.pub:ro
+      - ${dockerContext}/dan-test.pub:/home/tetrodesign/.ssh/keys/dan-test.pub:ro
     ports:
       - 172.16.100.1:8100:8100/tcp
     #environment:
