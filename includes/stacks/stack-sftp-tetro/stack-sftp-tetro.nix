@@ -5,7 +5,7 @@ let
 	GID = "0";
 	stacksDataRoot = "/stacks";
 
-	dockerContext = (pkgs.callPackage ../../packages/stack-sftp-tetro/package.nix {});
+	dockerContext = (pkgs.callPackage ../../../packages/stack-sftp-tetro/package.nix {});
 in
 {
 	options.local.stacks."sftp-tetro".enable = lib.mkOption {
