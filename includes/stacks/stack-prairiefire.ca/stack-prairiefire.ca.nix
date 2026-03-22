@@ -32,7 +32,7 @@ ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 	${stacksDataRoot}/${packageName} | \
 	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
 	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-prairiefire.ca.age".path} put - \
-	s3://PFWebBackups/${config.networking.hostName}-${packageName}.tar.xz.age || true
+	s3://PFWebBackups/${config.networking.hostName}-${packageName}-weekly.tar.xz.age || true
   '';
 			serviceConfig = {
 				Type = "oneshot";
