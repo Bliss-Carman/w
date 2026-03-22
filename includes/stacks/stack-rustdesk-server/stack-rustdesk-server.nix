@@ -13,6 +13,54 @@ in
 	
 	config = lib.mkIf config.local.stacks."rustdesk-server".enable {
 		
+
+		# REMOTE BACKUP
+		#systemctl list-timers
+		#systemctl start stack-prairiefire-s3-backup-weekly
+		local.backup.secrets.enable = lib.mkForce true;
+		age.secrets."backup-s3cfg-rustdesk-server.age".file = ../../../secrets/backup-s3cfg-rustdesk-server.age;
+
+		environment.interactiveShellInit = ''
+			alias do-backup-rustdesk-server-weekly='systemctl start stack-rustdesk-server-s3-backup-weekly.service'
+		'';
+
+
+		# Weekly
+		systemd.services."${packageName}-s3-backup-weekly" = {
+			script = ''
+set -o errexit
+set -o nounset
+set -o pipefail
+${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
+	${stacksDataRoot}/${packageName} | \
+	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
+	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-rustdesk-server.age".path} put - \
+	s3://PFWebBackups/${config.networking.hostName}-${packageName}-weekly.tar.xz.age || true
+  '';
+			serviceConfig = {
+				Type = "oneshot";
+				User = "root";
+				Nice = 19;
+				IOSchedulingClass = "idle";
+				IOSchedulingPriority=7;
+			};
+		};
+
+		systemd.timers."${packageName}-s3-backup-weekly" = {
+			wantedBy = [ "timers.target" ];
+			timerConfig = {
+				OnCalendar = "Wed *-*-* 01:00:00 America/Winnipeg";
+				Unit = "${packageName}-s3-backup-weekly.service";
+				Persistent = true;
+			};
+		};
+
+
+
+
+		# DOCKER
+
+
 		environment.etc."stacks/${packageName}/compose.yaml".text = (
 			builtins.replaceStrings [
 					''''${packageName}''
