@@ -20,7 +20,6 @@ in
 
 		# REMOTE BACKUP
 		#systemctl list-timers
-		#systemctl start stack-prairiefire-s3-backup-weekly
 		local.backup.secrets.enable = lib.mkForce true;
 		age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
 
