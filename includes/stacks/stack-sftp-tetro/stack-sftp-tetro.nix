@@ -15,6 +15,52 @@ in
 	
 	config = lib.mkIf config.local.stacks."sftp-tetro".enable {
 
+		# REMOTE BACKUP
+		#systemctl list-timers
+		local.backup.secrets.enable = lib.mkForce true;
+		age.secrets."backup-s3cfg-sftp-tetro.age".file = ../../../secrets/backup-s3cfg-sftp-tetro.age;
+
+		environment.interactiveShellInit = ''
+			alias do-backup-sftp-tetro-weekly='systemctl --verbose start stack-sftp-tetro-s3-backup-weekly.service'
+		'';
+
+
+		# Weekly
+		systemd.services."${packageName}-s3-backup-weekly" = {
+			script = ''
+set -o errexit
+set -o nounset
+set -o pipefail
+${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
+	${stacksDataRoot}/${packageName} | \
+	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
+	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-sftp-tetro.age".path} put - \
+	s3://PFWebBackups/${config.networking.hostName}-${packageName}-weekly.tar.xz.age || true
+  '';
+			serviceConfig = {
+				Type = "oneshot";
+				User = "root";
+				Nice = 19;
+				IOSchedulingClass = "idle";
+				IOSchedulingPriority=7;
+			};
+		};
+
+		systemd.timers."${packageName}-s3-backup-weekly" = {
+			wantedBy = [ "timers.target" ];
+			timerConfig = {
+				OnCalendar = "Thu *-*-* 01:00:00 America/Winnipeg";
+				Unit = "${packageName}-s3-backup-weekly.service";
+				Persistent = true;
+			};
+		};
+
+
+
+
+		# DOCKER
+
+
 		age.secrets."sftp-tetro-host-key-ecdsa-private.age".file = ../../../secrets/sftp-tetro-host-key-ecdsa-private.age;
 		age.secrets."sftp-tetro-host-key-ecdsa-public.age".file = ../../../secrets/sftp-tetro-host-key-ecdsa-public.age;
 		age.secrets."sftp-tetro-host-key-ed25519-private.age".file = ../../../secrets/sftp-tetro-host-key-ed25519-private.age;
