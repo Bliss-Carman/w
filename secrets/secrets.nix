@@ -24,11 +24,19 @@ let
 	
 in
 {
+	# Users
 	"userHashedPasswordFile-dan.age".publicKeys = systems-all ++ users-admin ++ user-dan;
 	"userHashedPasswordFile-lindsey.age".publicKeys = systems-all ++ users-admin ++ user-lindsey;
 	"userHashedPasswordFile-root.age".publicKeys = systems-all ++ users-admin;
 	"userHashedPasswordFile-tetrodesign.age".publicKeys = systems-all ++ users-admin;
 
+	# Backup
+	"backup-encrypted-recipients.age".publicKeys = systems-all ++ users-admin;
+	"backup-s3cfg-prairiefire.ca.age".publicKeys = systems-all ++ users-admin;
+	"backup-s3cfg-rustdesk-server.age".publicKeys = systems-all ++ users-admin;
+	"backup-s3cfg-sftp-tetro.age".publicKeys = systems-all ++ users-admin;
+
+	# Wireguard
 	"wgKey-server-public.age".publicKeys = systems-all ++ users-admin;
 	"wgKey-server-private.age".publicKeys = systems-servers ++ users-admin;
 	"wgKey-dan-public.age".publicKeys = systems-all ++ users-admin;
@@ -50,6 +58,7 @@ in
 	"wgKey-subscriptionmachine-public.age".publicKeys = systems-all ++ users-admin;
 	"wgKey-subscriptionmachine-private.age".publicKeys = users-admin;
 
+	# 3rd party access
 	"sftp-tetro-host-key-ecdsa-private.age".publicKeys = systems-servers ++ users-admin;
 	"sftp-tetro-host-key-ecdsa-public.age".publicKeys = systems-servers ++ users-admin;
 	"sftp-tetro-host-key-ed25519-private.age".publicKeys = systems-servers ++ users-admin;
@@ -58,6 +67,7 @@ in
 	"sftp-tetro-host-key-rsa-public.age".publicKeys = systems-servers ++ users-admin;
 	"sftp-tetro-env.age".publicKeys = systems-servers ++ users-admin;
 
+	# Stack
 	"dns-linode.age".publicKeys = systems-all ++ users-admin;
 	"mysql-root-password.age".publicKeys = systems-all ++ users-admin ++ user-dan;
 	"prairiefire.ca-env.age".publicKeys = systems-all ++ users-admin ++ user-dan;
