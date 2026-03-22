@@ -22,7 +22,7 @@ in
 		#systemctl list-timers
 		#systemctl start stack-prairiefire-s3-backup
 		local.backup.secrets.enable = lib.mkForce true;
-		age.secrets."bsackup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
+		age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
 		systemd.services."${packageName}-s3-backup" = {
 			script = ''
 set -o errexit
