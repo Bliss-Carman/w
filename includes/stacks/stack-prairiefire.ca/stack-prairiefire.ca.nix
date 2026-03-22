@@ -52,7 +52,7 @@ ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 			};
 		};
 
-		systemd.timers."${packageName}-s3-backup" = {
+		systemd.timers."${packageName}-s3-backup-weekly" = {
 			wantedBy = [ "timers.target" ];
 			timerConfig = {
 				OnCalendar = "Mon *-*-* 01:00:00 America/Winnipeg";
@@ -82,7 +82,7 @@ ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 			};
 		};
 
-		systemd.timers."${packageName}-s3-backup" = {
+		systemd.timers."${packageName}-s3-backup-monthly" = {
 			wantedBy = [ "timers.target" ];
 			timerConfig = {
 				OnCalendar = "Mon *-*-02 01:00:00 America/Winnipeg";
@@ -114,7 +114,7 @@ ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 			};
 		};
 
-		systemd.timers."${packageName}-s3-backup" = {
+		systemd.timers."${packageName}-s3-backup-bi-annually" = {
 			wantedBy = [ "timers.target" ];
 			timerConfig = {
 				OnCalendar = "Mon *-{01,07}-01 01:00:00 America/Winnipeg";
