@@ -117,7 +117,10 @@ ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 		systemd.timers."${packageName}-s3-backup-bi-annually" = {
 			wantedBy = [ "timers.target" ];
 			timerConfig = {
-				OnCalendar = "*-{01,07}-01 01:00:00 America/Winnipeg";
+				OnCalendar = [
+					"*-01-01 01:00:00 America/Winnipeg"
+					"*-07-01 01:00:00 America/Winnipeg"
+				];
 				Unit = "${packageName}-s3-backup-bi-annually.service";
 				Persistent = true;
 			};
