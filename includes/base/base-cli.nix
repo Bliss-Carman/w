@@ -60,5 +60,46 @@
 		util-linux
 		git
 	];
-	
+
+
+
+	# Configuration backup.
+
+	local.backup.secrets.enable = lib.mkForce true;
+	age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
+
+	environment.interactiveShellInit = ''
+		alias do-backup-nixos-config-weekly='systemctl --verbose start nixos-config-s3-backup-weekly.service'
+	'';
+
+	systemd.services."nixos-config-s3-backup-weekly" = {
+			script = ''
+set -o errexit
+set -o nounset
+set -o pipefail
+${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
+	/etc/nixos | \
+	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
+	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-prairiefire.ca.age".path} put - \
+	s3://PFWebBackups/${config.networking.hostName}-nixos-config-weekly.tar.xz.age || true
+  '';
+			serviceConfig = {
+				Type = "oneshot";
+				User = "root";
+				Nice = 19;
+				IOSchedulingClass = "idle";
+				IOSchedulingPriority=7;
+			};
+		};
+
+		systemd.timers."nixos-config-s3-backup-weekly" = {
+			wantedBy = [ "timers.target" ];
+			timerConfig = {
+				OnCalendar = "Mon *-*-* 01:00:00 America/Winnipeg";
+				Unit = "nixos-config-s3-backup-weekly.service";
+				Persistent = true;
+			};
+		};
+
+
 }
