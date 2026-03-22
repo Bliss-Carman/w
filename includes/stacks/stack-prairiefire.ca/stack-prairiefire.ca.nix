@@ -23,7 +23,7 @@ in
 		#systemctl start stack-prairiefire-s3-backup
 		local.backup.secrets.enable = lib.mkForce true;
 		age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
-		systemd.services."${packageName}-s3-backup" = {
+		systemd.services."${packageName}-s3-backup-weekly" = {
 			script = ''
 set -o errexit
 set -o nounset
@@ -47,7 +47,7 @@ ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 			wantedBy = [ "timers.target" ];
 			timerConfig = {
 				OnCalendar = "Mon *-*-* 01:00:00 America/Winnipeg";
-				Unit = "${packageName}-s3-backup.service";
+				Unit = "${packageName}-s3-backup-weekly.service";
 				Persistent = true;
 			};
 		};
