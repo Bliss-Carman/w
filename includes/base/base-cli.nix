@@ -3,6 +3,8 @@
 {
 	imports = [
 		../hardware/hardware-qemu-guest.nix
+
+		../../secrets/backup-secrets.nix
 		
 		../network/network-cli.nix
 		../network/network-browsers-cli.nix
