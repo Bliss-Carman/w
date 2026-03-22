@@ -25,11 +25,11 @@ in
 		age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
 
 		environment.interactiveShellInit = ''
-			alias do-backup-prairiefire-ca='systemctl start stack-prairiefire-s3-backup-weekly'
+			alias do-backup-prairiefire-ca-weekly='systemctl start stack-prairiefire.ca-s3-backup-weekly.service'
 		'';
 
 
-
+		# Weekly
 		systemd.services."${packageName}-s3-backup-weekly" = {
 			script = ''
 set -o errexit
@@ -58,6 +58,69 @@ ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 				Persistent = true;
 			};
 		};
+
+		# Monthly
+		systemd.services."${packageName}-s3-backup-monthly" = {
+			script = ''
+set -o errexit
+set -o nounset
+set -o pipefail
+${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
+	${stacksDataRoot}/${packageName} | \
+	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
+	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-prairiefire.ca.age".path} put - \
+	s3://PFWebBackups/${config.networking.hostName}-${packageName}-monthly.tar.xz.age || true
+  '';
+			serviceConfig = {
+				Type = "oneshot";
+				User = "root";
+				Nice = 19;
+				IOSchedulingClass = "idle";
+				IOSchedulingPriority=7;
+			};
+		};
+
+		systemd.timers."${packageName}-s3-backup" = {
+			wantedBy = [ "timers.target" ];
+			timerConfig = {
+				OnCalendar = "Mon *-*-02 01:00:00 America/Winnipeg";
+				Unit = "${packageName}-s3-backup-monthly.service";
+				Persistent = true;
+			};
+		};
+
+
+
+		# Bi-Annually
+		systemd.services."${packageName}-s3-backup-bi-annually" = {
+			script = ''
+set -o errexit
+set -o nounset
+set -o pipefail
+${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
+	${stacksDataRoot}/${packageName} | \
+	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
+	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-prairiefire.ca.age".path} put - \
+	s3://PFWebBackups/${config.networking.hostName}-${packageName}-bi-annually.tar.xz.age || true
+  '';
+			serviceConfig = {
+				Type = "oneshot";
+				User = "root";
+				Nice = 19;
+				IOSchedulingClass = "idle";
+				IOSchedulingPriority=7;
+			};
+		};
+
+		systemd.timers."${packageName}-s3-backup" = {
+			wantedBy = [ "timers.target" ];
+			timerConfig = {
+				OnCalendar = "Mon *-{01,07}-01 01:00:00 America/Winnipeg";
+				Unit = "${packageName}-s3-backup-bi-annually.service";
+				Persistent = true;
+			};
+		};
+
 
 		# DOCKER
 
