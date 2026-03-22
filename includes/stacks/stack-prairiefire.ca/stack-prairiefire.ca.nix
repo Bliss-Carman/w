@@ -29,7 +29,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
-	${config.local.stacks.dataRootPath}/${packageName} | \
+	${stacksDataRoot}/${packageName} | \
 	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
 	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-prairiefire.ca.age".path} put - \
 	s3://dsaul-backup/${config.networking.hostName}-${packageName}.tar.xz.age || true
