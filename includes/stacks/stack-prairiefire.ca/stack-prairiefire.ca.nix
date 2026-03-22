@@ -26,6 +26,8 @@ in
 
 		environment.interactiveShellInit = ''
 			alias do-backup-prairiefire-ca-weekly='systemctl start stack-prairiefire.ca-s3-backup-weekly.service'
+			alias do-backup-prairiefire-ca-monthly='systemctl start stack-prairiefire.ca-s3-backup-monthly.service'
+			alias do-backup-prairiefire-ca-bi-annually='systemctl start stack-prairiefire.ca-s3-backup-bi-annually.service'
 		'';
 
 
