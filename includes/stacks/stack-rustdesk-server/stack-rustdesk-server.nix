@@ -20,7 +20,7 @@ in
 		age.secrets."backup-s3cfg-rustdesk-server.age".file = ../../../secrets/backup-s3cfg-rustdesk-server.age;
 
 		environment.interactiveShellInit = ''
-			alias do-backup-rustdesk-server-weekly='systemctl start stack-rustdesk-server-s3-backup-weekly.service'
+			alias do-backup-rustdesk-server-weekly='systemctl --verbose start stack-rustdesk-server-s3-backup-weekly.service'
 		'';
 
 

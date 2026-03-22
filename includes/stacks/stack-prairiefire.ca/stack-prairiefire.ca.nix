@@ -24,9 +24,9 @@ in
 		age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
 
 		environment.interactiveShellInit = ''
-			alias do-backup-prairiefire-ca-weekly='systemctl start stack-prairiefire.ca-s3-backup-weekly.service'
-			alias do-backup-prairiefire-ca-monthly='systemctl start stack-prairiefire.ca-s3-backup-monthly.service'
-			alias do-backup-prairiefire-ca-bi-annually='systemctl start stack-prairiefire.ca-s3-backup-bi-annually.service'
+			alias do-backup-prairiefire-ca-weekly='systemctl --verbose start stack-prairiefire.ca-s3-backup-weekly.service'
+			alias do-backup-prairiefire-ca-monthly='systemctl --verbose start stack-prairiefire.ca-s3-backup-monthly.service'
+			alias do-backup-prairiefire-ca-bi-annually='systemctl --verbose start stack-prairiefire.ca-s3-backup-bi-annually.service'
 		'';
 
 
