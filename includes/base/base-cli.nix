@@ -66,7 +66,7 @@
 	# Configuration backup.
 
 	local.backup.secrets.enable = lib.mkForce true;
-	age.secrets."backup-s3cfg-nixos-config.age".file = ../../../secrets/backup-s3cfg-nixos-config.age;
+	age.secrets."backup-s3cfg-nixos-config.age".file = ../../secrets/backup-s3cfg-nixos-config.age;
 
 	environment.interactiveShellInit = ''
 		alias do-backup-nixos-config-weekly='systemctl --verbose start nixos-config-s3-backup-weekly.service'
