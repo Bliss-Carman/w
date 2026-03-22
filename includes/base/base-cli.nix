@@ -66,7 +66,7 @@
 	# Configuration backup.
 
 	local.backup.secrets.enable = lib.mkForce true;
-	age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
+	age.secrets."backup-s3cfg-nixos-config.age".file = ../../../secrets/backup-s3cfg-nixos-config.age;
 
 	environment.interactiveShellInit = ''
 		alias do-backup-nixos-config-weekly='systemctl --verbose start nixos-config-s3-backup-weekly.service'
@@ -80,7 +80,7 @@ set -o pipefail
 ${pkgs.gnutar}/bin/tar cvf - --use-compress-program=${pkgs.xz}/bin/xz \
 	/etc/nixos | \
 	${pkgs.age}/bin/age --recipients-file ${config.age.secrets."backup-encrypted-recipients.age".path} | \
-	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-prairiefire.ca.age".path} put - \
+	${pkgs.s3cmd}/bin/s3cmd --verbose --config=${config.age.secrets."backup-s3cfg-nixos-config.age".path} put - \
 	s3://PFWebBackups/${config.networking.hostName}-nixos-config-weekly.tar.xz.age || true
   '';
 			serviceConfig = {

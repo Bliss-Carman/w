@@ -32,6 +32,7 @@ in
 
 	# Backup
 	"backup-encrypted-recipients.age".publicKeys = systems-all ++ users-admin;
+	"backup-s3cfg-nixos-config.age".publicKeys = systems-all ++ users-admin;
 	"backup-s3cfg-prairiefire.ca.age".publicKeys = systems-all ++ users-admin;
 	"backup-s3cfg-rustdesk-server.age".publicKeys = systems-all ++ users-admin;
 	"backup-s3cfg-sftp-tetro.age".publicKeys = systems-all ++ users-admin;
