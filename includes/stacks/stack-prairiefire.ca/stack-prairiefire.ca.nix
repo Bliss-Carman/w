@@ -20,9 +20,16 @@ in
 
 		# REMOTE BACKUP
 		#systemctl list-timers
-		#systemctl start stack-prairiefire-s3-backup
+		#systemctl start stack-prairiefire-s3-backup-weekly
 		local.backup.secrets.enable = lib.mkForce true;
 		age.secrets."backup-s3cfg-prairiefire.ca.age".file = ../../../secrets/backup-s3cfg-prairiefire.ca.age;
+
+		environment.interactiveShellInit = ''
+			alias do-backup-prairiefire-ca='systemctl start stack-prairiefire-s3-backup-weekly'
+		'';
+
+
+
 		systemd.services."${packageName}-s3-backup-weekly" = {
 			script = ''
 set -o errexit
