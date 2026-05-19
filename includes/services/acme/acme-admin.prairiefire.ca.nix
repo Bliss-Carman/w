@@ -21,6 +21,10 @@
 			dnsProvider = "linode";
 			dnsPropagationCheck = true;
 			credentialsFile = config.age.secrets."dns-linode.age".path;
+
+			reloadServices = [
+				"nginx"
+			]
 		};
 		
 		# systemctl status acme-dsaul.ca.service
