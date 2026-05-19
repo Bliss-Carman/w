@@ -24,7 +24,7 @@
 
 			reloadServices = [
 				"nginx"
-			]
+			];
 		};
 		
 		# systemctl status acme-prairiefire.ca.service
