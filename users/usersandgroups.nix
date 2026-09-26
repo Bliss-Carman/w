@@ -20,6 +20,7 @@
 	
 	# Icons
 	fileSystems."/var/lib/AccountsService/icons" = {
+		fsType = "none";
 		device = "/etc/usericons.d";
 		options = [ "bind" ];
 	};
