@@ -17,10 +17,10 @@
 			group = config.services.nginx.group;
 			
 			# The LEGO DNS provider name. Depending on the provider, need different
-			# contents in the credentialsFile below.
+			# contents in the environmentFile below.
 			dnsProvider = "linode";
 			dnsPropagationCheck = true;
-			credentialsFile = config.age.secrets."dns-linode.age".path;
+			environmentFile = config.age.secrets."dns-linode.age".path;
 
 			reloadServices = [
 				"nginx"
