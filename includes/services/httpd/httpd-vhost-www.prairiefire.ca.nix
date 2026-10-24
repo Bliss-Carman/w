@@ -72,6 +72,10 @@
 							return 444;
 						}
 
+						sub_filter 'admin.prairiefire.ca'
+							'www.prairiefire.ca';
+						sub_filter_once on;
+
 						add_header Strict-Transport-Security $hsts_header;
 
 						# Minimize information leaked to other domains
