@@ -1,5 +1,26 @@
-version: "3"
 services:
+
+  anubis:
+    image: ghcr.io/techarohq/anubis
+    container_name: prairiefire.ca-anubis
+    restart: unless-stopped
+    environment:
+      # - BIND=":8923"
+      - COOKIE_DOMAIN=prairiefire.ca
+      - SERVE_ROBOTS_TXT=true
+      - REDIRECT_DOMAINS=prairiefire.ca,www.prairiefire.ca
+      - DIFFICULTY=12
+      - TARGET=http://php/
+      - TZ=America/Winnipeg
+    healthcheck:
+      test: ["CMD", "anubis", "--healthcheck"]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+      start_period: 500ms
+    ports:
+      - "172.16.100.1:8006:8923"
+
   php:
     build:
       context: ${dockerContext}
