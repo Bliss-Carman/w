@@ -45,8 +45,8 @@
 					https   "max-age=31536000; includeSubdomains; preload";
 				}
 
-				access_log syslog:server=unix:/dev/log;
-				error_log syslog:server=unix:/dev/log;
+				# access_log syslog:server=unix:/dev/log;
+				# error_log syslog:server=unix:/dev/log;
 			'';
 
 
