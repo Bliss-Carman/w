@@ -52,20 +52,20 @@
 
 		};
 
-		services.fail2ban = {
-			jails = {
-				nginx-url-probe.settings = { 
-					enabled = true;
-					filter = "nginx-url-probe";
-					logpath = "/var/log/nginx/access.log";
-					# action = ''iptables-multiport[name=HTTP, port="http,https"]'';
-					backend = "auto"; # Do not forget to specify this if your jail uses a log file
-					maxretry = 5; 
-					findtime = 600;
-					bantime  = 600;
-				}; 
-			};
-		};
+		# services.fail2ban = {
+		# 	jails = {
+		# 		nginx-url-probe.settings = { 
+		# 			enabled = true;
+		# 			filter = "nginx-url-probe";
+		# 			logpath = "/var/log/nginx/access.log";
+		# 			# action = ''iptables-multiport[name=HTTP, port="http,https"]'';
+		# 			backend = "auto"; # Do not forget to specify this if your jail uses a log file
+		# 			maxretry = 5; 
+		# 			findtime = 600;
+		# 			bantime  = 600;
+		# 		}; 
+		# 	};
+		# };
 		
 		networking.firewall.allowedTCPPorts = [ 80 443 ];
 	};
