@@ -12,7 +12,7 @@
 		];
 
 
-		#fail2ban-client status
+		#fail2ban-client status --all
 		#fail2ban-client status nginx-url-probe
 
 		services.fail2ban = {
