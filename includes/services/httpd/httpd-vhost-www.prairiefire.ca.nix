@@ -82,7 +82,7 @@
 						proxy_set_header Accept-Encoding "";
 
 						sub_filter 'admin.prairiefire.ca'
-							'www.prairiefire.ca';
+							'prairiefire.ca';
 						sub_filter_once off;
 
 						add_header Strict-Transport-Security $hsts_header;
