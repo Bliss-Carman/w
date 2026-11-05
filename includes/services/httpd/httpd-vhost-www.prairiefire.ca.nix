@@ -77,9 +77,13 @@
 						# the HTML response.
 						proxy_set_header Accept-Encoding "";
 
+						# Disable compression from the upstream so the sub_filter can modify
+						# the HTML response.
+						proxy_set_header Accept-Encoding "";
+
 						sub_filter 'admin.prairiefire.ca'
 							'www.prairiefire.ca';
-						sub_filter_once on;
+						sub_filter_once off;
 
 						add_header Strict-Transport-Security $hsts_header;
 
